@@ -37,7 +37,7 @@ $(document).ready(function(){
     newScreen();
 
     function generateHTML() {
-        console.log(answerChoices[questionCounter][0]);
+        // console.log(answerChoices[questionCounter][0]);
         newHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>20</span></p><p class='text-center'>" + questionsToAnswer[questionCounter] + "</p><p class='first-answer answer'><a class='btn btn outline-primary btn-lg answer-button' href='#' role='button'</a>A. " 
         + answerChoices[questionCounter][0] +
          "</p><p class='answer'>B. "+answerChoices[questionCounter][1]+"</p><p class='answer'>C. "+answerChoices[questionCounter][2]+"</p><p class='answer'>D. "+answerChoices[questionCounter][3]+"</p>";
@@ -124,25 +124,22 @@ $(document).ready(function(){
     
         timerWrapper();
     
-    }); // Closes start-button click
+    });
     
     $("body").on("click", ".answer", function(event){
-        //answeredQuestion = true;
         answersSelected = $(this).text();
         if(answersSelected === correctAnswers[questionCounter]) {
-            //alert("correct");
     
             clearInterval(theClock);
             generateWin();
         }
         else {
-            //alert("wrong answer!");
             clearInterval(theClock);
             generateLoss();
         }
-    }); // Close .answer click
+    });
     
     $("body").on("click", ".reset-button", function(event){
         resetGame();
-    }); // Closes reset-button click
+    });
 });
