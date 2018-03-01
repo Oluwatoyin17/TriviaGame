@@ -13,8 +13,8 @@ $(document).ready(function(){
     var correctAnswers = ["C. Jupiter","C. Seven","A. Charlie Chaplin","B. Sherlock Holmes","A. 0 and 1", "C. Sayonara"];
 
     // A variable that holds an array of images
-    var imageArray = ["<img src='./assets/images/jupiter.jpg'>", "<img src='../assets/images/seven.png'>", "<img src='../assets/images/charlie.jpg'>", "<img src='../assets/images/sherlock.jpg'>",
-         "<img src='../assets/images/zero.jpg'>", "<img src='../assets/images/sayonara.png'>" ];
+    var imageArray = ["<img src='./assets/images/jupiter.jpg'>", "<img src='./assets/images/seven.png'>", "<img src='./assets/images/charlie.jpg'>", "<img src='./assets/images/sherlock.jpg'>",
+         "<img src='./assets/images/zero.jpg'>", "<img src='./assets/images/sayonara.png'>" ];
 
 
     var counter = 20;
@@ -83,7 +83,7 @@ $(document).ready(function(){
     function generateLoss() {
         incorrectChoices++;
         newHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Nope! The answer is: "
-        + correctAnswers[questionCounter] + "</p>" + "<img src='../assets/images/giphy2.gif'>";
+        + correctAnswers[questionCounter] + "</p>" + "<img src='./assets/images/giphy2.gif'>";
         $(".mainArea").html(newHTML);
         setTimeout(delayTime, 2000); 
     }
@@ -92,7 +92,7 @@ $(document).ready(function(){
     function generateLossDueToTimeOut() {
         unansweredChoices++;
         newHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You are out of time!  The answer is: " 
-        + correctAnswers[questionCounter] + "</p>" + "<img src='../assets/images/giphy.gif'>";
+        + correctAnswers[questionCounter] + "</p>" + "<img src='./assets/images/giphy.gif'>";
         $(".mainArea").html(newHTML);
         setTimeout(delayTime, 2000); 
     }
