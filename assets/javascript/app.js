@@ -1,20 +1,22 @@
 $(document).ready(function(){
     
-
+    // A variable that holds an array of questions
     var questionsToAnswer = ["In our solar system, which planet has the shortest day?", "In geometry, how many sides are on a heptagon?","Who was known as The Tramp or The King of Comedy?",
     "Which fictional character lived at 221b Baker Street?","Which two numbers are used in binary code?","In Japanese, what is the word for goodbye?"];
 
 
+    //A variable that holds an array inside an array (nested arrays) of answer choices
     var answerChoices = [["Mars","Neptune","Jupiter","Saturn"],["Six","Eight","Seven","Nine"],["Charlie Chaplin","Rowan Atkinson","Robin Williams","Bill Cosby"],["Jim Halpert","Sherlock Holmes","Emma Swan",
        "Archie Andrews"],["0 and 1","10 and 11", "2 and 3","8 and 9"],["Konnichiwa","Hisashiburi","Sayonara","Suki desu"]];
 
-
+    // A variable that holds an array of correct choices
     var correctAnswers = ["C. Jupiter","C. Seven","A. Charlie Chaplin","B. Sherlock Holmes","A. 0 and 1", "C. Sayonara"];
-        var imageArray = ["<img class='center-block img-right' src='./assets/images/jupiter.jpg'>", "<img class='center-block img-right' src='./assets/images/seven.png'>", 
-        "<img class='center-block img-right' src='./assets/images/charlie.jpg'>", "<img class='center-block img-right' src='./assets/images/sherlock.jpg'>",
-         "<img class='center-block img-right' src='./assets/images/zero.jpg'>", "<img class='center-block img-right' src='./assets/images/sayonara.png'>" ];
 
-         
+    // A variable that holds an array of images
+    var imageArray = ["<img src='./assets/images/jupiter.jpg'>", "<img src='./assets/images/seven.png'>", "<img src='./assets/images/charlie.jpg'>", "<img src='./assets/images/sherlock.jpg'>",
+         "<img src='./assets/images/zero.jpg'>", "<img src='./assets/images/sayonara.png'>" ];
+
+
     var counter = 20;
     var questionCounter = 0;
     var answersSelected;
@@ -28,7 +30,7 @@ $(document).ready(function(){
 
     function newScreen(){
 
-        startScreen = "<p class='text-center main-button-container'><a class='btn btn-primary btn-lg btn-block start-button' href='#' role='button'>Start Quiz</a></p>";
+        startScreen = "<p class='text-center main-button-container'><a class='btn btn-primary btn-lg start-button' href='#' role='button'>Start</a></p>";
         $(".mainArea").html(startScreen);
 
     }
@@ -36,7 +38,7 @@ $(document).ready(function(){
 
     function generateHTML() {
         console.log(answerChoices[questionCounter][0]);
-        newHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>20</span></p><p class='text-center'>" + questionsToAnswer[questionCounter] + "</p><p class='first-answer answer'>A. " 
+        newHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>20</span></p><p class='text-center'>" + questionsToAnswer[questionCounter] + "</p><p class='first-answer answer'><a class='btn btn outline-primary btn-lg answer-button' href='#' role='button'</a>A. " 
         + answerChoices[questionCounter][0] +
          "</p><p class='answer'>B. "+answerChoices[questionCounter][1]+"</p><p class='answer'>C. "+answerChoices[questionCounter][2]+"</p><p class='answer'>D. "+answerChoices[questionCounter][3]+"</p>";
         $(".mainArea").html(newHTML);
@@ -81,8 +83,7 @@ $(document).ready(function(){
     function generateLoss() {
         incorrectChoices++;
         newHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Nope! The answer is: "
-        + correctAnswers[questionCounter] + "</p>" +
-         "<img class='center-block img-wrong' src='./assets/images/giphy2.gif'>";
+        + correctAnswers[questionCounter] + "</p>" + "<img src='./assets/images/giphy2.gif'>";
         $(".mainArea").html(newHTML);
         setTimeout(delayTime, 2000); 
     }
@@ -91,7 +92,7 @@ $(document).ready(function(){
     function generateLossDueToTimeOut() {
         unansweredChoices++;
         newHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You are out of time!  The answer is: " 
-        + correctAnswers[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='./assets/images/giphy.gif'>";
+        + correctAnswers[questionCounter] + "</p>" + "<img src='./assets/images/giphy.gif'>";
         $(".mainArea").html(newHTML);
         setTimeout(delayTime, 2000); 
     }
@@ -102,7 +103,7 @@ $(document).ready(function(){
         newHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Great job!! Here's how you did!" + "</p>" 
         + "<p class='summary-correct'>Correct Answers: " + 
         correctChoices + "</p>" + "<p>Wrong Answers: " + incorrectChoices + "</p>" + "<p>Unanswered: " + unansweredChoices + "</p>"
-        + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset Quiz!</a></p>";
+        + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg reset-button' href='#' role='button'>Reset</a></p>";
         $(".mainArea").html(newHTML);
     }
     
